@@ -1,56 +1,69 @@
 #!/usr/bin/env python3
 import re
 
-# class MyString:
-#   def __init__(self, value):
-#     if isinstance(value, str):
-#       self.value = value
-#     else:
-#       print ("The value must be a string.")
 
+
+# class MyString():
+#   def __init__(self, value = " "):
+#     self._value = value
   
+#   def get_value(self):
+#     return self._value
+  
+#   def set_value(self, value):
+#     if (type(value) == str):
+#       print(f"Setting value to {value}")
+#       self._value = value
+#     else:
+#       print("The value must be a string.")
+
+#   value = property(set_value, set_value)
+
 #   def is_sentence(self):
-#     return self.value.endswith(".")
+#     return self._value.endswith(".")
     
 #   def is_question(self):
-#     return self.value.endswith("?")
+#     return self._value.endswith("?")
       
-    
 #   def is_exclamation(self):
-#     return self.value.endswith("!")
-    
+#     return self._value.endswith("!")
+  
 #   def count_sentences(self):
-#     return self.value.count(".") + self.value.count("?") + self.count.value("!")
+#     if self.get_value == " ":
+#       return 0
+#     return len(re.split(r'[!\?\.](?= )', self.value))
 
-class MyString():
-  def __init__(self, value = " "):
-    self._value = value
-  
-  def get_value(self):
-    return self._value
-  
-  def set_value(self, value):
-    if (type(value) == str):
-      print(f"Setting value to {value}")
-      self._value = value
-    else:
-      print("The value must be a string.")
-
-  value = property(set_value, set_value)
-
-  def is_sentence(self):
-    return self._value.endswith(".")
-    
-  def is_question(self):
-    return self._value.endswith("?")
-      
-  def is_exclamation(self):
-    return self._value.endswith("!")
-  
-  def count_sentences(self):
-    if self.get_value == " ":
-      return 0
-    return len(re.split(r'[!\?\.](?= )', self.value))
     #return self.value.count(".") + self.value.count("?") + self.count.value("!")
     
-    
+
+class MyString():
+
+    def __init__(self, value = ''):
+        self._value = value
+        
+    def get_value(self):
+        return self._value
+
+    def set_value(self, value):
+        if (type(value) == str):
+            print(f"Setting value to {value}")
+            self._value = value
+        else:
+            print("The value must be a string.")
+
+    value = property(get_value, set_value)
+
+    def is_sentence(self):
+        return self._value.endswith(".")
+
+    def is_question(self):
+        return self._value.endswith("?")
+
+    def is_exclamation(self):
+        return self._value.endswith("!")
+
+    def count_sentences(self):
+        if self.value == '':
+            return 0
+            
+        return len(re.split(r'[!\?\.](?= )', self.value))
